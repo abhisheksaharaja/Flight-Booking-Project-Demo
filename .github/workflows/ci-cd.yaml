@@ -33,12 +33,12 @@ jobs:
         run: |
           gsutil cp variables/dev/variables.json gs://us-central1-airflow-test-332ff3f7-bucket/data/dev/variables.json
 
-      # Import Variables into Airflow-TEST
+      # Import Variables into Airflow-test
       - name: Import Variables into airflow-test
         run: |
           gcloud composer environments run airflow-test \
             --location us-central1 \
-            variables import -- gs://us-central1-airflow-test-332ff3f7-bucket/data/dev/variables.json
+            variables import -- /home/airflow/gcs/data/dev/variables.json
 
       # Sync Spark job to GCS
       - name: Upload Spark Job to GCS
