@@ -80,11 +80,12 @@ jobs:
           gsutil cp variables/prod/variables.json gs://us-central1-airflow-prod-e9198e5c-bucket/data/prod/variables.json
 
       # Import Variables into Airflow-PROD
-      - name: Import Variables into Airflow-PROD
+      - name: Import Variables into airflow-prod 
         run: |
           gcloud composer environments run airflow-prod \
             --location us-central1 \
-            variables import -- /home/airflow/gcs/data/prod/variables.json
+            variables import -- /home/airflow/gcs/data/prod/variables.json    
+
 
       # Sync Spark job to GCS
       - name: Upload Spark Job to GCS
